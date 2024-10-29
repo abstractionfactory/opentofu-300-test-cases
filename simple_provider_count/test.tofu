@@ -18,3 +18,8 @@ provider "docker" {
   host  = local.sockets[count.index]
   count = local.sockets
 }
+
+resource "docker_image" "ubuntu" {
+  provider = docker[0]
+  name     = "ubuntu:latest"
+}
