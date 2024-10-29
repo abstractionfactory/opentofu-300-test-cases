@@ -18,3 +18,8 @@ provider "docker" {
   host     = each.value
   for_each = toset(local.sockets)
 }
+
+resource "docker_image" "ubuntu" {
+  provider = docker[local.sockets[0]]
+  name     = "ubuntu:latest"
+}
